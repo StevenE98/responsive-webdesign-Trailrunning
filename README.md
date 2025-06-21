@@ -1,20 +1,27 @@
-# Responsive Web Design Project
+# Responsive Webdesign Trailrunning
 
+Dieses Projekt zeigt eine Beispiel-Produktseite für Wanderstöcke. Die Seite basiert auf HTML und CSS und bietet eine 3D-Ansicht über `<model-viewer>` sowie kleine Animationen.
 
-[https://stevene98.github.io/responsive-webdesign/](https://stevene98.github.io/responsive-webdesign-trailrunning/)
+## Demo
 
-This repository contains a sample responsive web page demonstrating product presentation for hiking poles. It is written in plain HTML and CSS and includes a small script for basic animations.
+[Zum Live-Beispiel auf GitHub Pages](https://stevene98.github.io/responsive-webdesign/responsive-webdesign-trailrunning/)
 
-## Usage
+## Funktionen
 
-1. Clone or download this repository.
-2. Make sure all image files are placed inside the `Bilder` directory in the project root. The `hiking_poles3.glb` 3D model should remain next to `index.html`.
-3. Open `index.html` in your web browser to view the page. For best results you can serve the files using a local web server.
+- Responsives Layout für Smartphone und Desktop
+- Interaktives 3D-Modell
+- Leichte Animationen
 
-4. The 3D model loads zoomed in. Adjust the zoom using your mouse wheel or pinch gestures on touch devices.
-## Required Assets
+## Einstieg
 
-The page expects several images stored in the `Bilder` folder and a glTF binary (`.glb`) model in the project root:
+1. Repository klonen oder herunterladen.
+2. Alle Bilddateien in den Ordner `Bilder` legen. Das Modell `hiking_poles3.glb` muss neben `index.html` liegen.
+3. `index.html` im Browser öffnen oder mit einem lokalen Webserver bereitstellen.
+4. Das 3D-Modell lässt sich mit dem Mausrad oder per Geste zoomen.
+
+## Benötigte Dateien
+
+Folgende Bilder und das glTF-Modell müssen vorhanden sein:
 
 - `Bilder/nikelogo.jpeg`
 - `Bilder/AthletinWanderstock.jpeg`
@@ -27,10 +34,14 @@ The page expects several images stored in the `Bilder` folder and a glTF binary 
 - `Bilder/black diamond vertical.jpeg`
 - `Bilder/makalu lite vertical.jpeg`
 - `Bilder/mountainsmith_lite_vertical2.jpg`
-- `hiking_poles3.glb` (3D hiking pole model)
+- `hiking_poles3.glb` (3D-Modell)
 
-These files must be present for the web page to render correctly.
+Diese Dateien müssen vorhanden sein, damit die Seite korrekt angezeigt wird.
 
-## Binary Assets
+## Binäre Dateien
 
-All images, PDFs, DOCX, PPTX files and the `.glb` 3D model are stored directly in this repository. The total project size is under 100&nbsp;MB, so using Git LFS is unnecessary. Keeping the assets in Git allows the page to work out-of-the-box when cloning the repo.
+Sämtliche Bilder, PDFs, DOCX-, PPTX-Dateien sowie das `.glb`-Modell liegen direkt in diesem Repository. Da das Projekt kleiner als 100 MB ist, wird kein Git LFS benötigt.
+
+## Lizenz
+
+Dieses Beispiel dient ausschließlich zu Lern- und Demonstrationszwecken.
