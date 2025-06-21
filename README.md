@@ -4,7 +4,7 @@ Dieses Projekt zeigt eine Beispiel-Produktseite für Wanderstöcke. Die Seite ba
 
 ## Demo
 
-[Zum Live-Beispiel auf GitHub Pages](https://stevene98.github.io/responsive-webdesign-Trailrunning/)
+[Nike-Trailrunning](https://stevene98.github.io/responsive-webdesign-Trailrunning/)
 
 ## Funktionen
 
