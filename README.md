@@ -1,7 +1,7 @@
 # Responsive Web Design Project
 
 
-https://stevene98.github.io/responsive-webdesign/
+https://stevene98.github.io/responsive-webdesign-trailrunning
 
 This repository contains a sample responsive web page demonstrating product presentation for hiking poles. It is written in plain HTML and CSS and includes a small script for basic animations.
 
