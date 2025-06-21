@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+  <html lang="de">
+    <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="Bilder/nikelogo.jpeg" type="image/x-icon" />
+
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<!-- Google Font: Poppins -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="description" content="Kurzbeschreibung der Wanderstöcke und des Shops">
+      <title>Nike | Wanderstock online kaufen</title>
+      <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+<body class="bg-white text-black" style="font-family: 'Poppins', sans-serif;">
+
+  <!-- Navbar: zentriertes Logo mit horizontalen Buttons darunter -->
+  <header id="site-header" class="bg-black text-white px-6 py-4">
+    <div class="flex justify-between items-center">
+
+      <!-- Linke Seite: Logo -->
+      <div class="flex-shrink-0">
+        <img src="Bilder/nikelogo.jpeg" alt="Nike Logo" class="h-12">
+      </div>
+
+      <!-- Hamburger Button (nur mobil) -->
+      <button id="menu-toggle" class="md:hidden text-2xl">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex flex-1 justify-center" id="main-menu">
+        <ul class="flex gap-6 text-sm">
+          <li><a href="#" class="hover:underline">Neues</a></li>
+          <li><a href="#" class="hover:underline">Herren</a></li>
+          <li><a href="#" class="hover:underline">Damen</a></li>
+          <li><a href="#" class="hover:underline">Kinder</a></li>
+          <li><a href="#" class="hover:underline">Angebote</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav id="mobile-menu" class="md:hidden hidden mt-4">
+      <ul class="flex flex-col items-center gap-4 text-sm">
+        <li><a href="#" class="hover:underline">Neues</a></li>
+        <li><a href="#" class="hover:underline">Herren</a></li>
+        <li><a href="#" class="hover:underline">Damen</a></li>
+        <li><a href="#" class="hover:underline">Kinder</a></li>
+        <li><a href="#" class="hover:underline">Angebote</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<!-- Hero Slideshow -->
+<section class="relative w-full h-screen overflow-hidden">
+  <div id="slides" class="w-full h-full relative">
+    <div class="slide absolute inset-0 transition-opacity duration-700 opacity-100">
+        <img src="Bilder/AthletinWanderstock.jpeg" class="hero-image" alt="Slide 1">
+    </div>
+    <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+        <img src="Bilder/AthletWanderstock.jpeg" class="hero-image" alt="Slide 2">
+    </div>
+    <div class="slide absolute inset-0 transition-opacity duration-700 opacity-0">
+        <img src="Bilder/KindWanderstock.jpeg" class="hero-image" alt="Slide 3">
+    </div>
+  </div>
+
+  <!-- Call to Action Overlay -->
+  <div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-30 text-center slide-cta slide-cta-0">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">FlexiLite900</h1>
+    <p class="text-lg md:text-xl lg:text-2xl mb-6">Performance für jedes Terrain</p>
+    <a href="#" class="rounded-full bg-opacity-90 bg-white text-black px-6 py-3 lg:px-8 lg:py-4 lg:text-lg font-semibold rounded hover:bg-gray-200">Jetzt entdecken</a>
+  </div>
+
+   <!-- Call to Action Overlay -->
+  <div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-30 text-center slide-cta slide-cta-1 hidden">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">VertiCore</h1>
+    <p class="text-lg md:text-xl lg:text-2xl mb-6">Maximale Power beim Aufstieg</p>
+    <a href="#" class="rounded-full bg-opacity-90 bg-white text-black px-6 py-3 lg:px-8 lg:py-4 lg:text-lg font-semibold rounded hover:bg-gray-200">Jetzt entdecken</a>
+  </div>
+
+  <!-- Call to Action Overlay -->
+  <div class="absolute inset-0 flex flex-col justify-center items-center text-white bg-black bg-opacity-30 text-center slide-cta slide-cta-2 hidden">
+    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Sicherer und komfortabler wandern</h1>
+    <p class="text-lg md:text-xl lg:text-2xl mb-6">Entdecken Sie unsere ergonomischen Gehstöcke</p>
+    <a href="#" class="rounded-full bg-opacity-90 bg-white text-black px-6 py-3 lg:px-8 lg:py-4 lg:text-lg font-semibold rounded hover:bg-gray-200">Jetzt entdecken</a>
+  </div>
+
+  <!-- Dots -->
+  <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+    <button class="dot w-2 h-2 rounded-full bg-white opacity-50" onclick="showSlide(0)"></button>
+    <button class="dot w-2 h-2 rounded-full bg-white opacity-50" onclick="showSlide(1)"></button>
+    <button class="dot w-2 h-2 rounded-full bg-white opacity-50" onclick="showSlide(2)"></button>
+  </div>
+</section>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  const ctas = document.querySelectorAll('.slide-cta');
+
+ function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.style.opacity = i === index ? '1' : '0';
+  });
+  dots.forEach((dot, i) => {
+    dot.classList.toggle('opacity-100', i === index);
+    dot.classList.toggle('opacity-50', i !== index);
+  });
+  ctas.forEach((cta, i) => {
+    cta.classList.toggle('hidden', i !== index);
+  });
+  currentSlide = index;
+}
+
+  setInterval(() => {
+    showSlide((currentSlide + 1) % slides.length);
+  }, 5000); // automatische Rotation alle 5 Sekunden
+</script>
+
+
+  <!-- Kategorien -->
+
+  <section class="w-full bg-gray-100 text-center pt-16 px-6 md:px-20 pb-16">
+    <div class="text-center max-w-4xl mx-auto mb-8 px-4">
+      <p class="text-sm uppercase text-gray-500 tracking-wide">Entdecke unsere Auswahl</p>
+      <h2 class="text-3xl lg:text-4xl font-bold mb-4">Shop nach Kategorie</h2>
+      <p class="text-base text-gray-700 leading-relaxed">
+        Entdecke unsere breite Auswahl an Wanderstöcken von ultraleichten Modellen für schnelle Touren bis hin zu robusten 
+        All-Terrain-Stöcken für jedes Wetter. Unsere Kollektion bietet für jede Anforderung das passende Modell. 
+        Ob für Einsteiger, erfahrene Bergsportler oder komfortbewusste Genießer, bei uns findest du genau das, was zu deinem Abenteuer passt.
+        Jedes Produkt überzeugt mit hochwertiger Verarbeitung und modernem Design. So wird jede Wanderung zu einem sicheren und komfortablen Erlebnis.
+      </p>
+    </div>
+    <div class="grid grid-cols-2 gap-4 px-4 md:px-8 max-w-4xl mx-auto w-full mx-auto">
+      <div class="relative group overflow-hidden rounded-lg aspect-square">
+        <img src="Bilder/hiking.png" alt="Wandern" class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <a href="#" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white font-semibold opacity-0 group-hover:opacity-100 transition category-link">WANDERN</a>
+      </div>
+      <div class="relative group overflow-hidden rounded-lg aspect-square w-full mx-auto">
+        <img src="Bilder/trailrunner.png" alt="Trailrunning" class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <a href="#" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white font-semibold opacity-0 group-hover:opacity-100 transition category-link">TRAILRUNNING</a>
+      </div>
+      <div class="relative group overflow-hidden rounded-lg aspect-square w-full mx-auto">
+        <img src="Bilder/crosstrail.png" alt="Cross Trail" class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <a href="#" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white font-semibold opacity-0 group-hover:opacity-100 transition category-link">CROSS TRAIL</a>
+      </div>
+      <div class="relative group overflow-hidden rounded-lg aspect-square w-full mx-auto">
+        <img src="Bilder/nordicwalking.png" alt="Nordic Walking" class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">
+        <a href="#" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white font-semibold opacity-0 group-hover:opacity-100 transition category-link">NORDIC WALKING</a>
+      </div>
+    </div>
+  </section>
+
+      <!-- Produkte -->
+
+  <section class="w-full bg-gray-100 text-center pt-16 px-6 md:px-20 pb-16">
+    <div class="text-center max-w-4xl mx-auto mb-8 px-4">
+      <p class="text-sm uppercase text-gray-500 tracking-wide">Für dein nächstes Abenteuer</p>
+      <h2 class="text-3xl lg:text-4xl font-bold mb-4">Unsere Sommer Highlights</h2>
+      <p class="text-base text-gray-700 leading-relaxed">
+        Ob ambitionierter Gipfelstürmer oder leidenschaftlicher Naturfan, hier findest du den Wanderstock, der zu dir passt.
+      	Du liebst Geschwindigkeit und Herausforderung? Unsere Trail-Running-Stöcke bringen dich durch jedes Rennen vom Training bis zum Ultra.
+        Oder willst du Wandern mit Style und Dynamik verbinden? Dann ist unsere Cross Trail Serie genau dein neues Must-have.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 px-4 md:px-8 max-w-screen-2xl lg:max-w-screen-3xl mx-auto">
+
+      <!-- Bild: Frau mit Wanderstock -->
+      <div>
+        <div class="relative product-image-container">
+          <img src="Bilder/black diamond vertical.jpeg" alt="black diamond wanderstock" class="w-full h-auto rounded-lg">
+
+          <!-- ⭐ Bewertung -->
+          <div class="absolute bottom-20 left-3 flex items-center gap-1 text-yellow-400 text-sm">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+            <span class="sr-only">4,5 von 5 Sternen</span>
+          </div>
+
+          <!-- 💰 Preis -->
+          <div class="absolute bottom-12 left-3 text-gray-500 font-bold bg-white bg-opacity-80 px-2 py-1 rounded text-sm">
+            79,95 €
+          </div>
+
+          <!-- CTA-Button im Bild -->
+          <div class="absolute bottom-3 left-3">
+            <a href="#" class="bg-black text-white text-s px-4 py-2 rounded-full font-medium hover:bg-gray-500 transition">SummitDrive</a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="relative product-image-container">
+          <img src="Bilder/makalu lite vertical.jpeg" alt="Trail runner with TrekForce X poles on rocky path" class="w-full h-auto rounded-lg">
+
+          <!-- ⭐ Bewertung -->
+          <div class="absolute bottom-20 left-3 flex items-center gap-1 text-yellow-400 text-sm">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+            <span class="sr-only">4,5 von 5 Sternen</span>
+          </div>
+
+          <!-- 💰 Preis -->
+          <div class="absolute bottom-12 left-3 text-gray-500 font-bold bg-white bg-opacity-80 px-2 py-1 rounded text-sm">
+            119,00 €
+          </div>
+
+          <!-- CTA-Button im Bild -->
+          <div class="absolute bottom-3 left-3">
+            <a href="#" class="bg-black text-white text-s px-4 py-2 rounded-full font-medium hover:bg-gray-500 transition">TrekForce X</a>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="relative product-image-container">
+          <img src="Bilder/mountainsmith_lite_vertical2.jpg" alt="Woman holding LexiStock Pro poles in alpine scenery" class="w-full h-auto rounded-lg">
+
+          <!-- ⭐ Bewertung -->
+          <div class="absolute bottom-20 left-3 flex items-center gap-1 text-yellow-400 text-sm">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star-half-alt" aria-hidden="true"></i>
+            <span class="sr-only">4,5 von 5 Sternen</span>
+          </div>
+
+          <!-- 💰 Preis -->
+          <div class="absolute bottom-12 left-3 text-gray-500 font-bold bg-white bg-opacity-80 px-2 py-1 rounded text-sm">
+            169,00 €
+          </div>
+
+          <!-- CTA-Button im Bild -->
+          <div class="absolute bottom-3 left-3">
+            <a href="#" class="bg-black text-white text-s px-4 py-2 rounded-full font-medium hover:bg-gray-500 transition">LexiStock Pro</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+
+  <section class="relative w-full h-screen overflow-hidden">
+  <div id="model-slides" class="w-full h-full relative">
+
+  <!-- Zentrum: 3D-Modell -->
+  <model-viewer
+    id="hikingModel"
+    src="hiking_poles3.glb"
+    alt="3D Wanderstock"
+    camera-controls
+    disable-zoom
+    camera-orbit="0deg 90deg auto"
+    min-camera-orbit="-60deg 60deg auto"
+    max-camera-orbit="60deg 120deg auto"
+
+    class="w-full h-full max-w-[100%] max-h-[100%] object-contain">
+  </model-viewer>
+</div>
+
+</section>
+<!-- Rezensionen -->
+<section class="w-full bg-white text-center pt-16 px-2 md:px-20 pb-16">
+  <h2 class="text-3xl lg:text-4xl font-bold mb-8">Die Kunden sagen</h2>
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8">
+    
+    <!-- Linke Seite: Allgemeine Kundenrezensionen mit Prozentbalken -->
+<div class="md:w-[45%] text-left space-y-6 pr-4">
+<h3 class="text-2xl lg:text-3xl font-semibold">Allgemeine Bewertungen</h3>
+      <div class="space-y-2">
+        <div class="flex items-center gap-2 mt-2">
+          <div class="text-yellow-500 text-xl">★★★★☆</div>
+          <span class="text-sm text-gray-600">4,6 von 5 Sternen</span>
+        </div>
+        <p class="text-xs text-gray-600 mt-1">1.245 weltweite Bewertungen</p>
+      </div>
+
+      <!-- Text-Buttons für Bewertungen und Prozent (Orange Balken) -->
+      <div class="space-y-2 mt-4 text-sm">
+        <div class="flex items-center gap-2">
+          <button class="text-blue-500 hover:underline focus:outline-none">5 Sterne</button>
+          <div class="w-3/4 bg-gray-200 rounded">
+            <div class="bg-yellow-500 h-3 rounded" style="width: 60%;"></div>
+          </div>
+          <button class="text-blue-500 hover:underline focus:outline-none">60%</button>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="text-blue-500 hover:underline focus:outline-none">4 Sterne</button>
+          <div class="w-3/4 bg-gray-200 rounded">
+            <div class="bg-yellow-500 h-3 rounded" style="width: 30%;"></div>
+          </div>
+          <button class="text-blue-500 hover:underline focus:outline-none">30%</button>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="text-blue-500 hover:underline focus:outline-none">3 Sterne</button>
+          <div class="w-3/4 bg-gray-200 rounded">
+            <div class="bg-yellow-500 h-3 rounded" style="width: 8%;"></div>
+          </div>
+          <button class="text-blue-500 hover:underline focus:outline-none">8%</button>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="text-blue-500 hover:underline focus:outline-none">2 Sterne</button>
+          <div class="w-3/4 bg-gray-200 rounded">
+            <div class="bg-yellow-500 h-3 rounded" style="width: 2%;"></div>
+          </div>
+          <button class="text-blue-500 hover:underline focus:outline-none">2%</button>
+        </div>
+        <div class="flex items-center gap-2">
+          <button class="text-blue-500 hover:underline focus:outline-none">1 Stern</button>
+          <div class="w-3/4 bg-gray-200 rounded">
+            <div class="bg-yellow-500 h-3 rounded" style="width: 0%;"></div>
+          </div>
+          <button class="text-blue-500 hover:underline focus:outline-none">0%</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rechte Seite: Kundenrezensionen -->
+    <div class="md:w-2/3 space-y-8">
+      <!-- Rezension 1: 4.5 Sterne -->
+      <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+        <div class="flex justify-center mb-2 text-yellow-500 text-sm">
+          ★★★★☆ 
+        </div>
+        <p class="text-sm italic">"Diese Wanderstöcke sind ein absoluter Game-Changer! Super leicht und stabil. Perfekt für lange Touren."</p>
+        <div class="flex justify-between mt-2 text-xs text-gray-600">
+          <p>– Lara S.</p>
+          <p>Vor 3 Tagen</p>
+        </div>
+      </div>
+
+      <!-- Rezension 2: 4.5 Sterne -->
+      <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+        <div class="flex justify-center mb-2 text-yellow-500 text-sm">
+          ★★★★☆ 
+        </div>
+        <p class="text-sm italic">"Ich liebe den ergonomischen Griff – selbst bei Regen bleibt alles rutschfest und sicher!"</p>
+        <div class="flex justify-between mt-2 text-xs text-gray-600">
+          <p>– Markus W.</p>
+          <p>Vor 5 Tagen</p>
+        </div>
+      </div>
+
+      <!-- Rezension 3: 5 Sterne -->
+      <div class="bg-gray-100 p-4 rounded-lg shadow-md">
+        <div class="flex justify-center mb-2 text-yellow-500 text-sm">
+          ★★★★★
+        </div>
+        <p class="text-sm italic">"Einfach perfekt für meine Wanderabenteuer. Leicht, robust und super anpassbar!"</p>
+        <div class="flex justify-between mt-2 text-xs text-gray-600">
+          <p>– Anja B.</p>
+          <p>Vor 1 Woche</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Social Media -->
+<section class="py-8 bg-white text-center">
+  <div class="flex justify-center gap-6 text-2xl lg:text-3xl text-gray-600">
+    <a href="#" aria-label="Facebook" class="hover:text-blue-600">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="#" aria-label="Instagram" class="hover:text-pink-500">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="#" aria-label="X / Twitter" class="hover:text-black">
+      <i class="fab fa-x-twitter"></i>
+    </a>
+  </div>
+</section>
+
+      <!-- Footer -->
+      <footer class="bg-gray-100 py-12 text-sm text-black">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
+      
+          <!-- Spalte 1: Ressourcen -->
+          <div>
+            <h3 class="font-bold mb-4">Ressourcen</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:underline">Geschenkgutscheine</a></li>
+              <li><a href="#" class="hover:underline">Geschenkgutscheine für Firmen</a></li>
+              <li><a href="#" class="hover:underline">Store suchen</a></li>
+              <li><a href="#" class="hover:underline">Händlersuche</a></li>
+              <li><a href="#" class="hover:underline">Member werden</a></li>
+              <li><a href="#" class="hover:underline">Studentenrabatt</a></li>
+              <li><a href="#" class="hover:underline">Feedback</a></li>
+              <li><a href="#" class="hover:underline">Aktionscodes</a></li>
+            </ul>
+          </div>
+
+          <!-- Spalte 2: Hilfe -->
+          <div>
+            <h3 class="font-bold mb-4">Hilfe</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:underline">Hilfe</a></li>
+              <li><a href="#" class="hover:underline">Bestellstatus</a></li>
+              <li><a href="#" class="hover:underline">Versand und Lieferung</a></li>
+              <li><a href="#" class="hover:underline">Rückgaben</a></li>
+              <li><a href="#" class="hover:underline">Zahlungsoptionen</a></li>
+              <li><a href="#" class="hover:underline">Kontakt</a></li>
+              <li><a href="#" class="hover:underline">Bewertungen</a></li>
+              <li><a href="#" class="hover:underline">Aktionscodes</a></li>
+            </ul>
+          </div>
+      
+          <!-- Spalte 3: Unternehmen -->
+          <div>
+            <h3 class="font-bold mb-4">Unternehmen</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:underline">Über Nike</a></li>
+              <li><a href="#" class="hover:underline">Neuigkeiten</a></li>
+              <li><a href="#" class="hover:underline">Karriere</a></li>
+              <li><a href="#" class="hover:underline">Unsere Athleten</a></li>
+              <li><a href="#" class="hover:underline">Nachhaltigkeit</a></li>
+              <li><a href="#" class="hover:underline">Barrierefreiheit</a></li>
+              <li><a href="#" class="hover:underline">Karriere</a></li>
+              <li><a href="#" class="hover:underline">Bedenken melden</a></li>
+            </ul>
+          </div>
+
+          
+            <!-- Spalte 4: Beratung -->
+          <div>
+            <h3 class="font-bold mb-4">Beratung</h3>
+            <ul class="space-y-2">
+              <li><a href="#" class="hover:underline">Finde deine Stocklänge</a></li>
+              <li><a href="#" class="hover:underline">Wie pflege ich meine Stöcke</a></li>
+              <li><a href="#" class="hover:underline">Handgröße ermitteln</a></li>
+              <li><a href="#" class="hover:underline">Wie wähle ich die richtige Spitze</a></li>
+              <li><a href="#" class="hover:underline">Ersatzteile</a></li>
+            </ul>
+          </div>
+      
+      
+        </div>
+      
+      <!-- Copyright und rechtlicher Hinweis -->
+    <div class="text-center mt-10 text-gray-600">
+      <p>&copy; 2025 Nike, Inc. Alle Rechte vorbehalten.</p>
+      <div class="flex flex-wrap justify-center gap-4 mt-2">
+        <a href="#" class="hover:underline">Impressum</a>
+        <a href="#" class="hover:underline">Datenschutz</a>
+        <a href="#" class="hover:underline">Kontakt</a>
+        <a href="#" class="hover:underline">Guides</a>
+        <a href="#" class="hover:underline">Nutzungsbedingungen</a>
+        <a href="#" class="hover:underline">Verkaufsbedingungen</a>
+        <a href="#" class="hover:underline">Datenschutz- und Cookie-Richtlinie</a>
+        <a href="#" class="hover:underline">Datenschutz- und Cookie-Einstellung</a>
+      </div>
+    </div>
+
+      </footer>
+    <script>
+const faders = document.querySelectorAll('.fade-in, .fade-in-delay, .fade-in-delay-2');
+
+const appearOnScroll = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    } else {
+      entry.target.classList.remove('visible');
+    }
+  });
+}, { threshold: 0.3 });
+
+faders.forEach(el => appearOnScroll.observe(el));
+</script>
+
+<script>
+  const modelViewer = document.getElementById('hikingModel');
+
+  // Animation control: play animation on click
+  modelViewer.addEventListener('load', () => {
+    if (modelViewer.availableAnimations && modelViewer.availableAnimations.length > 0) {
+      modelViewer.animationName = modelViewer.availableAnimations[0];
+      modelViewer.pause();
+    }
+  });
+
+  let animationFinished = false;
+  const pauseFrame = 41;
+  const fps = 30;
+  let pausedAtFrame = false;
+
+  modelViewer.addEventListener('click', () => {
+    if (animationFinished) {
+      modelViewer.currentTime = 0;
+      modelViewer.pause();
+      animationFinished = false;
+      pausedAtFrame = false;
+    } else if (modelViewer.paused && modelViewer.availableAnimations && modelViewer.availableAnimations.length > 0) {
+      modelViewer.currentTime = 0;
+      modelViewer.play({repetitions: 1});
+      pausedAtFrame = false;
+    }
+  });
+
+  modelViewer.addEventListener('timeupdate', () => {
+    if (!pausedAtFrame) {
+      const currentFrame = Math.floor(modelViewer.currentTime * fps);
+      if (currentFrame >= pauseFrame) {
+        pausedAtFrame = true;
+        const wasFinished = animationFinished;
+        modelViewer.pause();
+        setTimeout(() => {
+          if (!wasFinished) {
+            modelViewer.play();
+          }
+        }, 1000);
+      }
+    }
+  });
+
+  modelViewer.addEventListener('finished', () => {
+    animationFinished = true;
+    modelViewer.pause();
+  });
+
+  // Allow page scrolling when mouse wheel is used over the model
+  modelViewer.addEventListener('wheel', (event) => {
+   if (modelViewer.hasAttribute('disable-zoom')) {
+      window.scrollBy(0, event.deltaY);
+    }
+  });
+</script>
+
+<script>
+  const toggleButton = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  toggleButton.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+</script>
+
+<script>
+  const siteHeader = document.getElementById('site-header');
+  let lastScrollY = window.pageYOffset;
+
+  window.addEventListener('scroll', () => {
+    const current = window.pageYOffset;
+    if (current < lastScrollY || current <= 0) {
+      siteHeader.classList.remove('hide');
+    } else if (current > lastScrollY) {
+      siteHeader.classList.add('hide');
+    }
+    lastScrollY = current;
+  });
+</script>
+
+    </body>
+  </html>
